@@ -1,0 +1,32 @@
+.dialog{
+    .title{
+        display: flex;
+        text-transform: capitalize;
+    }
+
+    .closeIcon{
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 20px;    
+    }
+    .closeIconRtl{
+        @extend .closeIcon;
+        left: 0;
+        right: initial;
+    }
+    &.fullPage{
+        padding-top: 0!important;
+        top: -40px!important;
+        .title ~ div{
+            max-height: none!important;
+            height: calc(100% - 75px);
+        }
+        > div{
+            height: 100%;
+            > div > div{
+                height: calc(100% - 50px);
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+node_modules/
+venv/
+staticfiles/
+__pycache__/
+npm-debug.log
+db.sqlite3
+.idea
+.pyc
