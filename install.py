@@ -44,4 +44,5 @@ def extract_command_string(commands_list):
 
     return string_command
 
+
 call(extract_command_string(commands), cwd=dir_path, shell=True)
