@@ -9,7 +9,7 @@
     "preinstall": "npm install -g karma-cli",
     "test": "karma start config/karma.conf.js --single-run",
     "test:local": "karma start config/karma.conf.js",
-    "clean": "rm -rf dist"
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "@material-ui/core": "1.1.0",
@@ -37,6 +37,7 @@
     "redux": "3.7.2",
     "redux-logger": "3.0.6",
     "redux-thunk": "2.2.0",
+    "rimraf": "2.6.2",
     "webpack": "3.8.1",
     "whatwg-fetch": "2.0.4"
   },

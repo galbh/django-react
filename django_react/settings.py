@@ -28,6 +28,20 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Channels
+
+ASGI_APPLICATION = "django_react.routing.application"
+
+redis_host = os.environ.get('REDIS_HOST', 'redis-11506.c9.us-east-1-4.ec2.cloud.redislabs.com')
+
+CHANNEL_LAYERS = {
+    # "default": {
+    #     "BACKEND": "channels_redis.core.RedisChannelLayer",
+    #     "CONFIG": {
+    #         "hosts": [(redis_host, 6379)], #11506
+    #     },
+    # },
+}
 
 # Application definition
 
@@ -41,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_swagger',
+    'channels'
 ]
 
 MIDDLEWARE = [

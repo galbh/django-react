@@ -4,9 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-djangorestframework = "==3.8.2"
-Django = "==2.0.7"
+djangorestframework = "*"
+Django = "*"
 django-rest-swagger = "*"
+channels = "*"
+channels_redis = "*"
+twisted = "*"
+"pywin32" = "*"
 
 [dev-packages]
 
