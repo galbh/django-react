@@ -1,0 +1,15 @@
+@import '../../../../assets/scss/variables.scss';
+
+.header{
+  background-color: $bg-secondary!important;
+  line-height: 60px;
+  height: 60px!important;
+
+  > div{
+      padding-left: 18px;
+      padding-right: 18px;
+  }
+  .title{
+      padding: 0 20px;
+  }
+}

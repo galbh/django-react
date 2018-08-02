@@ -6,3 +6,4 @@ npm-debug.log
 db.sqlite3
 .idea
 .pyc
+Pipfile.lock

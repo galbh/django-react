@@ -150,9 +150,10 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'frontend/core-app/dist'),
+    os.path.join(BASE_DIR, 'frontend/public-app/dist'),
 )
 
 # Urls
-LOGIN_URL = '/admin'
+LOGIN_URL = '/accounts'
 LOGOUT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

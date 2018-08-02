@@ -17,7 +17,11 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.http.response import HttpResponse
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, render_to_response
+
+
+def index(request):
+    return render_to_response('public/index.html')
 
 
 class SignUp(generics.CreateAPIView):

@@ -1,8 +1,9 @@
-from backend.accounts.views import SignUp, Login, LogOut
+from backend.accounts.views import SignUp, Login, LogOut, index
 from django.conf.urls import url
 
 
 urlpatterns = [
+    url(r'^$', index),
     url(r'^login$', Login.as_view()),
     url(r'^signup$', SignUp.as_view()),
     url(r'^logout$', LogOut.as_view()),

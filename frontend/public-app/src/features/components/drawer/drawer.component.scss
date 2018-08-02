@@ -1,0 +1,81 @@
+@import '../../../../assets/scss/variables.scss';
+
+$drawer-width: 120px;
+$primary-icon-color: gray;
+$font-size-medium: 14px;
+$transition-rate: 0.4s;
+$primary-selected-text-color: red;
+$drawer-bg-color: rgba(232, 212, 212, 0.58);
+
+.container {
+  > div:nth-child(2) {
+    width: $drawer-width!important;
+  }
+  height: 100%;
+}
+
+.container{
+
+  .drawer{    
+    width: 100%!important;
+    height: 100%;
+    background: $drawer-bg-color;
+
+    .logo{
+      border-right: none;
+      display: flex;
+      justify-content: center;
+      height: 60px;
+      background: #fff;
+    }
+  
+    a{
+      text-decoration: none!important;
+
+      li{
+        padding: 0;
+        color: $primary-icon-color;
+        font-size: $font-size-medium;
+        text-transform: uppercase;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        transition: $transition-rate;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        img{
+          max-width: 50px;
+        }
+      }
+    }    
+    
+    .active > li{
+      background: $bg-secondary;
+      color: $primary-selected-text-color;
+      font-weight: bold;
+    }
+  }
+  
+}
+
+@media (max-width: $mobile-width) {
+  .container, .container > div:nth-child(2){
+    width: 80%!important;
+  }
+  .drawer{
+    width: 100%!important;
+  }
+
+  li{
+    flex-direction: row!important;
+    height: 55px!important;
+    justify-content: flex-start!important;
+    padding: 0 20px;
+    .icon{
+      width: 50px;
+      margin: 10px;
+    }
+  }
+}
