@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   initiateData () {
-    this.props.dispatch(new OpenDialogAction('react starter', 'hello from app.component.jsx'));
+    this.props.openDialog('react starter', 'hello from app.component.jsx');
   }
 
   render () {
@@ -66,7 +66,7 @@ App.propTypes = {
   dialogType: propTypes.string,
   isDrawerRender: propTypes.bool.isRequired,
   isRtl: propTypes.bool.isRequired,
-  dispatch: propTypes.func.isRequired,
+  openDialog: propTypes.func.isRequired,
   // from react router
   location: propTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   history: propTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
@@ -88,4 +88,11 @@ function mapStateToProps (state) {
     isRtl: state.shared.isRtl()
   };
 }
-export default withRouter(connect(mapStateToProps)(App));
+
+function mapDispatchToProps (dispatch) {
+  return {
+    openDialog: (title, component) => dispatch(new OpenDialogAction(title, component))
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

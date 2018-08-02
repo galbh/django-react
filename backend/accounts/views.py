@@ -99,10 +99,10 @@ class Login(generics.CreateAPIView):
 
 class LogOut(generics.RetrieveAPIView):
     serializer_class = UserProfileSerializer
-    queryset = UserProfile
+    queryset = User
 
     def get_object(self):
-        obj = get_object_or_404(UserProfile, user=self.request.user)
+        obj = get_object_or_404(User, id=self.request.user.id)
 
         if obj:
             logout(self.request)

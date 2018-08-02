@@ -17,6 +17,7 @@ npm_install = 'npm i'
 npm_build = 'npm run build'
 run_django_server = manage + 'runserver'
 run_chrome = 'start chrome "http://localhost:8000"'
+create_super_user = "echo from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@mail.com', '1234') | pipenv run python manage.py shell"
 
 commands = [
     # install server dependencies
@@ -24,6 +25,7 @@ commands = [
     # migrate data base
     makemigrations,
     migrate,
+    create_super_user,
     # install and build ui core app
     access_core_ui_folder,
     npm_install,
@@ -53,5 +55,4 @@ def extract_command_string(commands_list):
 
     return string_command
 
-print(extract_command_string(commands))
 call(extract_command_string(commands), cwd=dir_path, shell=True)

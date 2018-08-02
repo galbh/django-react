@@ -7,6 +7,7 @@ import SpinnerComponent from './features/components/spinner/spinner.component.js
 import DialogComponent from './features/components/dialog/dialog.component.jsx';
 import DrawerComponent from './features/components/drawer/drawer.component.jsx';
 import { routes } from './common/constants';
+import { OpenDialogAction } from './common/state/dialog/dialog.actions';
 
 class App extends Component {
   componentDidMount () {
@@ -14,6 +15,18 @@ class App extends Component {
     if (this.props.location.pathname === routes.empty) {
       this.props.history.push(routes.login);
     }
+
+    // show default super user information
+    // to remove when starting to develop
+    this.props.openDialog(
+      'Default user created',
+      <div>
+        <div>Username: admin</div>
+        <div>Password: 1234</div>
+        <br />
+        <div>remove from app.component.jsx constructor</div>
+      </div>
+    );
   }
 
   render () {
@@ -60,6 +73,7 @@ App.propTypes = {
   dialogType: propTypes.string,
   isDrawerRender: propTypes.bool.isRequired,
   isRtl: propTypes.bool.isRequired,
+  openDialog: propTypes.func.isRequired,
   // from react router
   location: propTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   history: propTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
@@ -81,4 +95,14 @@ function mapStateToProps (state) {
     isRtl: state.shared.isRtl()
   };
 }
-export default withRouter(connect(mapStateToProps)(App));
+
+function mapDispatchToProps (dispatch) {
+  return {
+    openDialog: (title, component) => dispatch(new OpenDialogAction(
+      title,
+      component
+    ))
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

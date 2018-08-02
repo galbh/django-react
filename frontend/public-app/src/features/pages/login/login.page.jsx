@@ -41,6 +41,7 @@ class LoginPage extends Component {
           />
 
           <Button
+            type="submit"
             onClick={e => this.onSubmit(e, username, password)}
             variant="outlined"
           >
