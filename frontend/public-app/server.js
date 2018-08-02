@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.use('/api', api);
+app.use('', api);
 app.use('/internal', internalApi);
 
 app.get('/', (req, res) => {

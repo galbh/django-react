@@ -1,11 +1,11 @@
 export default {
   login: {
-    url: '/api/utility/user-info',
-    method: 'GET',
+    url: '/accounts/login',
+    method: 'POST',
     contentType: 'application/json'
   },
-  signout: {
-    url: '/api/internal/commands/sign-out',
+  logout: {
+    url: '/accounts/logout',
     method: 'POST',
     contentType: 'application/json'
   }

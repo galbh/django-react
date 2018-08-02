@@ -1,3 +1,7 @@
 {
-  "HOME_PAGE": "דף הבית"
+  "HOME_PAGE": "דף הבית",
+  "USERNAME": "שם משתמש",
+  "USERNAME_HINT": "הכניסו שם משתמש או מייל",
+  "PASSWORD_HINT": "הכניסו סיסמא תקינה",
+  "PASSWORD": "סיסמא"
 }

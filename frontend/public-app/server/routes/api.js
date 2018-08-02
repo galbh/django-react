@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 
 // Mock data
-const loggedInUser = require('../mock/loggedInUser.json');
 
 const serverResponseTime = 200;
 
@@ -19,10 +18,7 @@ function send (res, data) {
  */
 
 // Get Logged in user
-router.get('/internal/user-info', (req, res) => send(res.status(200), loggedInUser));
-
-// Sign out
-router.post('/internal/commands/sign-out', (req, res) => {
+router.post('/accounts/login', (req, res) => {
   send(res.status(200));
 });
 

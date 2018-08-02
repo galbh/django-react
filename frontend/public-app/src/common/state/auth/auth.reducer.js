@@ -1,11 +1,12 @@
 import authState from './auth.state';
-import { FETCH_LOGGED_IN_USER } from './auth.actions';
 import { SUCCESS_SUFFIX } from '../../constants';
+import { LOGIN } from './auth.actions';
 
 function authReducer (state = authState, action) {
   switch (action.type) {
-    case `${FETCH_LOGGED_IN_USER}${SUCCESS_SUFFIX}`:
-      return { ...state, loggedInUser: action.payload };
+    case `${LOGIN}${SUCCESS_SUFFIX}`:
+      window.location.href = '/';
+      return { ...state };
 
     default:
       return state;

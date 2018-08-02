@@ -1,1 +1,7 @@
 @import '../assets/scss/variables.scss';
+
+:global{
+  #root, #root > div{
+    height: 100%;
+  }
+}

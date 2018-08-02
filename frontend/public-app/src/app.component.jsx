@@ -6,20 +6,14 @@ import styles from './app.component.scss';
 import SpinnerComponent from './features/components/spinner/spinner.component.jsx';
 import DialogComponent from './features/components/dialog/dialog.component.jsx';
 import DrawerComponent from './features/components/drawer/drawer.component.jsx';
-import { OpenDialogAction } from './common/state/dialog/dialog.actions';
 import { routes } from './common/constants';
 
 class App extends Component {
   componentDidMount () {
-    this.initiateData();
-    // redirect to homepage if route is empty
+    // redirect to login if route is empty
     if (this.props.location.pathname === routes.empty) {
-      this.props.history.push(routes.home);
+      this.props.history.push(routes.login);
     }
-  }
-
-  initiateData () {
-    this.props.dispatch(new OpenDialogAction('react starter', 'hello from app.component.jsx'));
   }
 
   render () {
@@ -66,7 +60,6 @@ App.propTypes = {
   dialogType: propTypes.string,
   isDrawerRender: propTypes.bool.isRequired,
   isRtl: propTypes.bool.isRequired,
-  dispatch: propTypes.func.isRequired,
   // from react router
   location: propTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   history: propTypes.object.isRequired // eslint-disable-line react/forbid-prop-types

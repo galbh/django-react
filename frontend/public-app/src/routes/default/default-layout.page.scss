@@ -1,4 +1,10 @@
 @import '../../../assets/scss/variables.scss';
+
 .wrapper{
   padding: $frame-padding;
+  height: calc(100% - 124px);
+}
+
+.container, .wrapper > div{
+  height: 100%;  
 }

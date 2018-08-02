@@ -5,7 +5,8 @@ export const SUCCESS_SUFFIX = '_SUCCESS';
 export const routes = {
   empty: '/',
   home: '/home',
-  about: '/about'
+  about: '/about',
+  login: '/login'
 };
 
 export const mobileMaxWidth = 1023;
