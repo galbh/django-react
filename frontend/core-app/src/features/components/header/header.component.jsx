@@ -1,25 +1,30 @@
 import React from 'react';
-import propTypes from 'prop-types';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
-import { Toolbar, Icon, IconButton } from '@material-ui/core';
+import { Button, Toolbar, Icon, IconButton } from '@material-ui/core';
 import styles from './header.component.scss';
-import { OpenDrawerAction } from '../../../common/state/drawer/drawer.actions';
 
-const HeaderComponent = props => (
+const HeaderComponent = ({ openDrawer, logout }) => (
   <div>
     <AppBar position="static" className={styles.header}>
       <Toolbar>
-        <IconButton onClick={() => props.dispatch(new OpenDrawerAction())}>
+
+        <IconButton onClick={() => openDrawer()}>
           <Icon className={styles.hamburgerBtn}>menu</Icon>
         </IconButton>
+
+        <Button variant="outlined" onClick={logout}>
+          logout
+        </Button>
+
       </Toolbar>
     </AppBar>
   </div>
 );
 
 HeaderComponent.propTypes = {
-  dispatch: propTypes.func.isRequired
+  openDrawer: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired
 };
 
-export default connect()(HeaderComponent);
+export default HeaderComponent;

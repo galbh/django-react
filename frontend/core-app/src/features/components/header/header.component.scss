@@ -6,9 +6,12 @@
   height: 60px!important;
 
   > div{
-      padding-left: 18px;
-      padding-right: 18px;
+    padding-left: 18px;
+    padding-right: 18px;
+    display: flex;
+    justify-content: space-between;
   }
+  
   .title{
       padding: 0 20px;
   }

@@ -1,15 +1,18 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './default-layout.page.scss';
 import HeaderComponent from '../../features/components/header/header.component.jsx';
 import userModel from '../../common/state/auth/auth.models';
+import { OpenDrawerAction } from '../../common/state/drawer/drawer.actions';
+import { LogoutAction } from '../../common/state/auth/auth.actions';
 
 const DefaultLayout = (props) => {
   const {
-    loggedInUser, path, component
+    loggedInUser, path, component, openDrawer, logout
   } = props;
+
   const Component = component;
   return (
     <Route
@@ -18,6 +21,8 @@ const DefaultLayout = (props) => {
         <div className={styles.container}>
           <HeaderComponent
             path={path}
+            openDrawer={openDrawer}
+            logout={logout}
             loggedInUser={loggedInUser}
           />
           <div className={styles.wrapper}>
@@ -35,12 +40,21 @@ function mapStateToProps (state) {
   };
 }
 
+function mapDispatchToProps (dispatch) {
+  return {
+    openDrawer: () => dispatch(new OpenDrawerAction()),
+    logout: () => dispatch(new LogoutAction())
+  };
+}
+
 DefaultLayout.propTypes = {
-  loggedInUser: propTypes.shape(userModel),
-  path: propTypes.string.isRequired,
-  component: propTypes.func.isRequired
+  loggedInUser: PropTypes.shape(userModel),
+  path: PropTypes.string.isRequired,
+  component: PropTypes.func.isRequired,
+  openDrawer: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired
 };
 
 DefaultLayout.defaultProps = { loggedInUser: null };
 
-export default connect(mapStateToProps)(DefaultLayout);
+export default connect(mapStateToProps, mapDispatchToProps)(DefaultLayout);
