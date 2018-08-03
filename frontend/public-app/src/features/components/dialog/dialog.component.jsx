@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
+import styles from './dialog.component.scss'
 import { DialogTitle, DialogContent, DialogContentText } from '@material-ui/core';
 import { CloseDialogAction } from '../../../common/state/dialog/dialog.actions';
 
@@ -10,22 +11,20 @@ const DialogComponent = props => (
     style={props.isRtl ? { direction: 'rtl' } : null}
     open={props.open}
     onClose={() => props.dispatch(new CloseDialogAction())}
+    className={styles.dialog}
   >
-    <DialogTitle>{props.title}</DialogTitle>
+    <DialogTitle className={styles.title}>{props.title}</DialogTitle>
 
-    <DialogContent>
-      <DialogContentText>
-        {props.text}
-      </DialogContentText>
+    <DialogContent className={styles.content}>
+      {props.text}
     </DialogContent>
-
   </Dialog>
 );
 
 DialogComponent.propTypes = {
   open: propTypes.bool.isRequired,
   title: propTypes.string,
-  text: propTypes.string,
+  text: propTypes.oneOfType([propTypes.string, propTypes.element]),
   dispatch: propTypes.func.isRequired,
   isRtl: propTypes.bool
 };

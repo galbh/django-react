@@ -1,7 +1,13 @@
+@import '../../../../assets/scss/variables.scss';
+
 .dialog{
     .title{
         display: flex;
         text-transform: capitalize;
+    }
+
+    .content{
+        color: $text-color-dimmed;
     }
 
     .closeIcon{

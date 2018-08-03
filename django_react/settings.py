@@ -149,11 +149,22 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'frontend/core-app/dist'),
-    os.path.join(BASE_DIR, 'frontend/public-app/dist'),
+    os.path.join(BASE_DIR, 'frontend', 'core-app', 'dist'),
+    os.path.join(BASE_DIR, 'frontend', 'public-app', 'dist'),
+    os.path.join(BASE_DIR, 'frontend', 'templates'),
 )
 
 # Urls
 LOGIN_URL = '/accounts'
 LOGOUT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# EMAIL configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'xxx@xxx.com'
+EMAIL_HOST_PASSWORD = 'xxx'
+SERVER_EMAIL = 'xxx@xxx.com'
+DEFAULT_FROM_EMAIL = 'X Team <noreply@xxx.com>'

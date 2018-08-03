@@ -6,7 +6,8 @@ export const routes = {
   empty: '/',
   home: '/home',
   about: '/about',
-  login: '/login'
+  login: '/login',
+  resetPassword: '/reset-password'
 };
 
 export const mobileMaxWidth = 1023;

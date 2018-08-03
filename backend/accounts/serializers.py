@@ -37,3 +37,13 @@ class CredentialsSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'password')
+
+
+class RequestResetPasswordSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('email', )
+
+
+class ResetPasswordSerializer(serializers.Serializer):
+    password = serializers.CharField()

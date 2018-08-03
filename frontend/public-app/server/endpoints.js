@@ -4,8 +4,8 @@ export default {
     method: 'POST',
     contentType: 'application/json'
   },
-  logout: {
-    url: '/accounts/logout',
+  requestResetPasswordByEmail: {
+    url: '/accounts/request-reset-password-by-email',
     method: 'POST',
     contentType: 'application/json'
   }

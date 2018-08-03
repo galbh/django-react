@@ -24,6 +24,13 @@ const DrawerComponent = (props) => {
         <div className={styles.logo}><LogoComponent /></div>
 
         <DrawerLink
+          to={routes.login}
+          iconSrc={ImgSrc}
+          label={props.t('LOGIN')}
+          className={getClassName(routes.login)}
+        />
+
+        <DrawerLink
           to={routes.home}
           iconSrc={ImgSrc}
           label={props.t('HOME_PAGE')}

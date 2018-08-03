@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { translate } from 'react-i18next';
 import { TextField, Button } from '@material-ui/core';
 import styles from './login.page.scss';
 import { LoginAction } from '../../../common/state/auth/auth.actions';
+import { routes } from '../../../common/constants';
 
 class LoginPage extends Component {
   constructor (props) {
@@ -39,6 +41,8 @@ class LoginPage extends Component {
             type="password"
             onChange={e => this.setState({ password: e.target.value })}
           />
+
+          <Link to={routes.resetPassword}>forgot your password</Link>
 
           <Button
             type="submit"

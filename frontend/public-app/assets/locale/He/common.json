@@ -1,7 +1,12 @@
 {
   "HOME_PAGE": "דף הבית",
+  "ABOUT_PAGE": "אודות",
   "USERNAME": "שם משתמש",
   "USERNAME_HINT": "הכניסו שם משתמש או מייל",
   "PASSWORD_HINT": "הכניסו סיסמא תקינה",
-  "PASSWORD": "סיסמא"
+  "PASSWORD": "סיסמא",
+  "EMAIL": "דואר אלקטרוני",
+  "RESET_PASSWORD_EMAIL_PLACEHOLDER": "דואר עם קישור יישלח לכתובת זו",
+  "EMAIL_WAS_SENT_SUCCESSFULLY": "דואר נשלח בהצלחה",
+  "SUCCESS": "success"
 }

@@ -22,4 +22,9 @@ router.post('/accounts/login', (req, res) => {
   send(res.status(200));
 });
 
+// Request reset password email
+router.post('/accounts/request-reset-password-by-email', (req, res) => {
+  send(res.status(200))
+})
+
 module.exports = router;
