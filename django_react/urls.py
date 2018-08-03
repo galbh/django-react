@@ -2,8 +2,10 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls.conf import include
 
+from django_react import settings
 from django_react.views import core_index
 from rest_framework_swagger.views import get_swagger_view
+from django.conf.urls.static import static
 
 swagger_view = get_swagger_view(title='Django react API')
 
@@ -13,3 +15,6 @@ urlpatterns = [
     url(r'^accounts/', include('backend.accounts.urls')),
     url(r'^admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

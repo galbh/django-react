@@ -9,6 +9,7 @@ import LoginPage from '../features/pages/login/login.page.jsx';
 import HomePage from '../features/pages/home/home.page.jsx';
 import AboutPage from '../features/pages/about/about.page.jsx';
 import ResetPassowordPage from '../features/pages/reset-password/reset-password.page.jsx';
+import ConfirmResetPassword from '../features/pages/confirm-reset-password/confirm-reset-password.page.jsx';
 
 import { routes } from '../common/constants';
 
@@ -23,8 +24,11 @@ const Root = ({ store }) => ({
                 <DefaultLayout path={routes.home} component={HomePage} />
                 <DefaultLayout path={routes.login} component={LoginPage} />
                 <DefaultLayout path={routes.about} component={AboutPage} />
-                <DefaultLayout path={routes.resetPassword} component={ResetPassowordPage} />
-                
+                <DefaultLayout exact path={routes.resetPassword} component={ResetPassowordPage} />
+                <DefaultLayout
+                  path={routes.confirmResetPassword}
+                  component={ConfirmResetPassword}
+                />
               </Switch>
             </App>
           </Router>

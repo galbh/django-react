@@ -1,12 +1,14 @@
 {
-  "HOME_PAGE": "דף הבית",
-  "ABOUT_PAGE": "אודות",
-  "USERNAME": "שם משתמש",
-  "USERNAME_HINT": "הכניסו שם משתמש או מייל",
-  "PASSWORD_HINT": "הכניסו סיסמא תקינה",
-  "PASSWORD": "סיסמא",
-  "EMAIL": "דואר אלקטרוני",
-  "RESET_PASSWORD_EMAIL_PLACEHOLDER": "דואר עם קישור יישלח לכתובת זו",
-  "EMAIL_WAS_SENT_SUCCESSFULLY": "דואר נשלח בהצלחה",
-  "SUCCESS": "success"
+  "HOME_PAGE": "home page",
+  "ABOUT_PAGE": "about page",
+  "USERNAME": "username",
+  "USERNAME_HINT": "username or email",
+  "PASSWORD_HINT": "enter your password",
+  "PASSWORD": "password",
+  "EMAIL": "email",
+  "RESET_PASSWORD_EMAIL_PLACEHOLDER": "an email with link will be sent to this address",
+  "EMAIL_WAS_SENT_SUCCESSFULLY": "email was sent successfully",
+  "SUCCESS": "success",
+  "RESET_PASSWORD": "reset password",
+  "PASSWORD_CHANGED": "password changed"
 }

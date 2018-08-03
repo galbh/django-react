@@ -123,9 +123,9 @@ class RequestResetPassword(generics.CreateAPIView):
     def post(self, request, *args, **kwargs):
         email = request.data.get('email')
         try:
-            User.objects.get(email=email)
-            uidb64 = urlsafe_base64_encode(force_bytes(request.user.pk)).decode()
-            token = default_token_generator.make_token(request.user)
+            user = User.objects.get(email=email)
+            uidb64 = urlsafe_base64_encode(force_bytes(user.pk)).decode()
+            token = default_token_generator.make_token(user)
             j = json.dumps({"responseText": Constants.CHANGE_PASSWORD_REQUEST, "uidb64": uidb64, "token": token})
             return Response(j, status=200)
 
@@ -161,7 +161,7 @@ class ResetPassword(mixins.RetrieveModelMixin, mixins.CreateModelMixin, generics
         if user and new_password and len(new_password) > 0 and is_valid:
             user.set_password(new_password)
             user.save()
-            user = authenticate(username=user.email, password=new_password)
+            authenticate(username=user.email, password=new_password)
             auth_login(request, user)
             return Response(Constants.LOGIN_SUCCESS, status=200)
         else:

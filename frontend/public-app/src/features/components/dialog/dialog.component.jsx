@@ -2,8 +2,8 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
-import styles from './dialog.component.scss'
-import { DialogTitle, DialogContent, DialogContentText } from '@material-ui/core';
+import { DialogTitle, DialogContent } from '@material-ui/core';
+import styles from './dialog.component.scss';
 import { CloseDialogAction } from '../../../common/state/dialog/dialog.actions';
 
 const DialogComponent = props => (

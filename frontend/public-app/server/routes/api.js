@@ -27,4 +27,9 @@ router.post('/accounts/request-reset-password-by-email', (req, res) => {
   send(res.status(200))
 })
 
+// Confirm reset password
+router.post('/accounts/reset-password/:uidb64/:token', (req, res) => {
+  send(res.status(200));
+})
+
 module.exports = router;

@@ -3,6 +3,7 @@
 .wrapper{
   padding: $frame-padding;
   height: calc(100% - 124px);
+  overflow: auto;
 }
 
 .container, .wrapper > div{

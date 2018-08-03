@@ -24,7 +24,8 @@ module.exports = {
         "required": {
             "every": [ "id" ]
         }
-      }]
+      }],
+      "jsx-a11y/anchor-is-valid": 0
     },
     globals: {
       "API_HOST": true

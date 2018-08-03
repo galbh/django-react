@@ -8,5 +8,7 @@
   "EMAIL": "email",
   "RESET_PASSWORD_EMAIL_PLACEHOLDER": "an email with link will be sent to this address",
   "EMAIL_WAS_SENT_SUCCESSFULLY": "email was sent successfully",
-  "SUCCESS": "success"
+  "SUCCESS": "success",
+  "RESET_PASSWORD": "reset password",
+  "PASSWORD_CHANGED": "password changed"
 }
