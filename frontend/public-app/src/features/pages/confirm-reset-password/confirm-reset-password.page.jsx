@@ -28,13 +28,14 @@ class ConfirmResetPasswordPage extends Component {
 
     return (
       <div className={styles.container}>
-        <CardComponent
+        <CardComponent          
           title={t('RESET_PASSWORD')}
           className={styles.card}
           contentClassName={styles.cardContent}
           component={
             <form onSubmit={e => this.onSubmit(e)}>
               <TextField
+                type="password"
                 label={t('PASSWORD')}
                 value={this.state.password}
                 onChange={e => this.setState({ password: e.target.value })}

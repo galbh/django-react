@@ -1,8 +1,9 @@
 {
-  "email": "gal.benhaim@solaredge.com",
-  "firstName": "Gal",
-  "lastName": "Ben Haim",
-  "userId": "bd31c01e-267e-4c5d-817d-c3a836f71a66",
-  "utilityId": null,
-  "utilityName": null
+  "id": "1",
+  "username": "gal",
+  "phone_number": "",
+  "email": "gal_ben_haim@yahoo.com",
+  "full_name": "gal",
+  "is_superuser": "True",
+  "is_staff": "True"
 }

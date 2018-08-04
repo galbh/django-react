@@ -7,13 +7,12 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from rest_framework import mixins, generics, permissions
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK
 from backend.accounts.serializers import UserSerializer, CredentialsSerializer, UserProfileSerializer, \
-    RequestResetPasswordSerializer, ResetPasswordSerializer
+    RequestResetPasswordSerializer, ResetPasswordSerializer, UpdateProfileSerializer
 from backend.accounts.validations import Validations
-from django_react import settings
 from rest_framework.response import Response
 from .constants import Constants
 from backend.accounts.models import UserProfile
-from django.contrib.auth import authenticate, login as auth_login, logout
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.http.response import HttpResponse
@@ -23,6 +22,14 @@ from django.template import loader
 
 def index(request):
     return render_to_response('public/index.html')
+
+
+class GetLoggedInUser(generics.RetrieveAPIView):
+    permission_classes = (permissions.IsAuthenticated, )
+    serializer_class = UserProfileSerializer
+
+    def get_object(self):
+        return UserProfile.objects.get(user=self.request.user)
 
 
 class SignUp(generics.CreateAPIView):
@@ -90,11 +97,17 @@ class Login(generics.CreateAPIView):
         password = request.data.get('password')
         user = authenticate(username=username, password=password)
 
-        if user:
+        if user is not None:
             auth_login(request, user)
             return Response(Constants.LOGIN_SUCCESS, status=200)
         else:
-            return Response(Constants.ERROR_USER_NOT_FOUND, status=500)
+            try:
+                user = User.objects.get(email=username)
+                auth_login(request, user)
+                return Response(Constants.LOGIN_SUCCESS, status=200)
+
+            except User.DoesNotExist:
+                return Response(Constants.ERROR_USER_NOT_FOUND, status=500)
 
 
 class LogOut(generics.RetrieveAPIView):
@@ -102,14 +115,13 @@ class LogOut(generics.RetrieveAPIView):
     Logs out user and redirects as configured in settings
     """
     serializer_class = UserProfileSerializer
-    queryset = User
+    queryset = UserProfile
 
     def get_object(self):
-        obj = get_object_or_404(User, id=self.request.user.id)
-
-        if obj:
-            logout(self.request)
-            return redirect(settings.LOGOUT_REDIRECT_URL)
+        logged_user = get_object_or_404(UserProfile, user=self.request.user)
+        if logged_user:
+            auth_logout(self.request)
+            return logged_user
 
 
 class RequestResetPassword(generics.CreateAPIView):
@@ -209,6 +221,42 @@ class RequestResetPasswordByEmail(generics.CreateAPIView):
 
         except User.DoesNotExist:
             return Response(Constants.ERROR_USER_NOT_FOUND)
+
+
+class UpdateProfile(generics.UpdateAPIView):
+    permission_classes = (permissions.IsAuthenticated, )
+    serializer_class = UpdateProfileSerializer
+
+    def get_object(self):
+        return UserProfile.objects.get(user=self.request.user)
+
+    def put(self, request, *args, **kwargs):
+        """
+        Update user profile
+
+        Args:
+        string username
+        string phone_number
+        string email
+        string full_name
+        boolean is_superuser
+        boolean is_staff
+
+        Returns: updated user object
+        """
+        profile = UserProfile.objects.get(user=request.user)
+
+        for (key, value) in request.data.items():
+            if key != 'id' and key != 'password':
+                if hasattr(profile, key):
+                    setattr(profile, key, value)
+                else:
+                    if hasattr(profile.user, key):
+                        setattr(profile.user, key, value)
+
+        profile.user.save()
+        profile.save()
+        return Response(UserProfileSerializer(profile).data)
 
 
 # TODO: swagger should arrange endpoint by package name (ie accounts)

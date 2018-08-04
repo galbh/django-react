@@ -13,12 +13,12 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    id = serializers.CharField(source='user.id', read_only=True)
-    username = serializers.CharField(source='user.username', read_only=True)
-    is_staff = serializers.CharField(source='user.is_staff', read_only=True)
-    is_superuser = serializers.CharField(source='user.is_superuser', read_only=True)
-    email = serializers.CharField(source='user.email', read_only=True)
-    full_name = serializers.CharField(read_only=True)
+    id = serializers.CharField(source='user.id')
+    username = serializers.CharField(source='user.username')
+    is_staff = serializers.CharField(source='user.is_staff')
+    is_superuser = serializers.CharField(source='user.is_superuser')
+    email = serializers.CharField(source='user.email')
+    full_name = serializers.CharField()
 
     class Meta:
         model = UserProfile
@@ -31,6 +31,14 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'is_superuser',
             'is_staff'
         )
+
+
+class UpdateProfileSerializer(UserProfileSerializer):
+    id = None
+
+    class Meta:
+        model = UserProfile
+        exclude = ('user', )
 
 
 class CredentialsSerializer(serializers.ModelSerializer):

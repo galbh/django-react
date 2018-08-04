@@ -17,19 +17,19 @@ function send (res, data) {
  * Api routes
  */
 
-// Get Logged in user
+// Login
 router.post('/accounts/login', (req, res) => {
   send(res.status(200));
 });
 
 // Request reset password email
 router.post('/accounts/request-reset-password-by-email', (req, res) => {
-  send(res.status(200))
-})
+  send(res.status(200));
+});
 
 // Confirm reset password
 router.post('/accounts/reset-password/:uidb64/:token', (req, res) => {
   send(res.status(200));
-})
+});
 
 module.exports = router;

@@ -6,8 +6,9 @@ import styles from './app.component.scss';
 import SpinnerComponent from './features/components/spinner/spinner.component.jsx';
 import DialogComponent from './features/components/dialog/dialog.component.jsx';
 import DrawerComponent from './features/components/drawer/drawer.component.jsx';
-import { OpenDialogAction } from './common/state/dialog/dialog.actions';
 import { routes } from './common/constants';
+import { StartLoaderAction, StopLoaderAction } from './common/state/shared/shared.actions';
+import { FetchLoggedInUserAction } from './common/state/auth/auth.actions';
 
 class App extends Component {
   componentDidMount () {
@@ -19,7 +20,10 @@ class App extends Component {
   }
 
   initiateData () {
-    this.props.openDialog('react starter', 'hello from app.component.jsx');
+    const { startLoader, stopLoader, fetchLoggedInUser } = this.props;
+
+    startLoader();
+    fetchLoggedInUser().then(user => stopLoader());
   }
 
   render () {
@@ -66,7 +70,9 @@ App.propTypes = {
   dialogType: propTypes.string,
   isDrawerRender: propTypes.bool.isRequired,
   isRtl: propTypes.bool.isRequired,
-  openDialog: propTypes.func.isRequired,
+  startLoader: propTypes.func.isRequired,
+  stopLoader: propTypes.func.isRequired,
+  fetchLoggedInUser: propTypes.func.isRequired,
   // from react router
   location: propTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   history: propTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
@@ -91,7 +97,9 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    openDialog: (title, component) => dispatch(new OpenDialogAction(title, component))
+    startLoader: () => dispatch(new StartLoaderAction()),
+    stopLoader: () => dispatch(new StopLoaderAction()),
+    fetchLoggedInUser: () => dispatch(new FetchLoggedInUserAction())
   };
 }
 

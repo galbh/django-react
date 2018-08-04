@@ -11,10 +11,13 @@ export const LoginAction = createAsyncAction(LOGIN, (username, password) => {
   return HttpService.fetch({ ...options, body: JSON.stringify({ username, password }) });
 });
 
-export const RequestResetPasswordAction = createAsyncAction(REQUEST_RESET_PASSWORD, (email) => {
-  const options = ApiService.getOptions('requestResetPasswordByEmail');
-  return HttpService.fetch({ ...options, body: JSON.stringify({ email }) });
-});
+export const RequestResetPasswordAction = createAsyncAction(
+  REQUEST_RESET_PASSWORD,
+  (email) => {
+    const options = ApiService.getOptions('requestResetPasswordByEmail');
+    return HttpService.fetch({ ...options, body: JSON.stringify({ email }) });
+  }
+);
 
 export const ConfirmResetPasswordAction = createAsyncAction(
   CONFIRM_RESET_PASSWORD,

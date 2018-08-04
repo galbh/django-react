@@ -15,4 +15,16 @@
   .title{
       padding: 0 20px;
   }
+
+  .actions{
+    display: flex;
+    line-height: 20px;
+    align-items: center;
+
+    > div{
+      padding: 20px;
+      color: $text-color;
+      font-weight: bold;
+    }
+  }
 }
