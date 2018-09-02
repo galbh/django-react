@@ -16,7 +16,8 @@
 * [live demo](https://django-react-seed.herokuapp.com)
 
 ## IMPORTANT
-- If serving this application from a non windows server (heroku for example) make sure to remove `pywin32` from Pipfile !
+- If serving this application from a non windows server (heroku for example) make sure to remove `pywin32` from Pipfile.
+- Change ENVIRONMENT variable in settings/base.py to ENVIRONMENT['production'] before deploying to production.
 - Make sure to create .env file in the root directory, with the following variables:
 	* SECRET_KEY
 	* DB_NAME

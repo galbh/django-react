@@ -17,7 +17,7 @@ npm_install = 'npm i'
 npm_build = 'npm run build'
 run_django_server = manage + 'runserver --insecure'
 run_chrome = 'start chrome "http://localhost:8000"'
-create_super_user = "echo from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@mail.com', '1234') | pipenv run python manage.py shell"
+create_super_user = "echo from backend.accounts.models import UserProfile; from django.contrib.auth.models import User; created_user = User.objects.create_superuser('admin', 'admin@mail.com', '1234'); UserProfile.objects.create(user=created_user, full_name=created_user.username) | pipenv run python manage.py shell"
 
 commands = [
     # install server dependencies
