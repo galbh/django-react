@@ -31,15 +31,6 @@
 	* SERVER_EMAIL
 	* DEFAULT_FROM_EMAIL
 
-# Email
- = 'smtp.gmail.com'
- = True
- = 587
- = 'xxx@xxx.com'
- = 'xxx'
- = 'xxx@xxx.com'
- = 'X Team <noreply@xxx.com>'
-
 ## Installation
 
 Run `python install.py` from root directory to preform the following tasks automatically:
