@@ -6,8 +6,10 @@ ENVIRONMENTS = {
     'production': 'django_react.settings.production',
 }
 
-# DEPLOY IN PRODUCTION ONLY !
+# CHANGE TO - ENVIRONMENTS['production'] - BEFORE DEPLOYING !
 ENVIRONMENT = ENVIRONMENTS['development']
+
+print('running in {} environment'.format(ENVIRONMENT))
 
 CURRENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.abspath(os.path.join(CURRENT_DIR, os.pardir))

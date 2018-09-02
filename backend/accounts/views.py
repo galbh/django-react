@@ -238,16 +238,6 @@ class UpdateProfile(generics.UpdateAPIView):
     def put(request):
         """
         Update user profile
-
-        Args:
-        string username
-        string phone_number
-        string email
-        string full_name
-        boolean is_superuser
-        boolean is_staff
-
-        Returns: updated user object
         """
         profile = UserProfile.objects.get(user=request.user)
 
@@ -262,6 +252,3 @@ class UpdateProfile(generics.UpdateAPIView):
         profile.user.save()
         profile.save()
         return Response(UserProfileSerializer(profile).data)
-
-
-# TODO: swagger should arrange endpoint by package name (ie accounts)
