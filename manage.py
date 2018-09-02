@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 import os
 import sys
+from django_react.settings import base as settings
 
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_react.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings.ENVIRONMENT)
     try:
         from django.core.management import execute_from_command_line
     except ImportError:

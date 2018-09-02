@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
+from django_react.settings import base as settings
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_react.settings")
-
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings.ENVIRONMENT)
 application = get_wsgi_application()

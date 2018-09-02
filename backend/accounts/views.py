@@ -39,7 +39,8 @@ class SignUp(generics.CreateAPIView):
     permission_classes = (permissions.IsAdminUser,)
     serializer_class = UserSerializer
 
-    def post(self, request, *args, **kwargs):
+    @staticmethod
+    def post(request):
         data = request.data
         password = data.get('password')
         email = data.get('email')
@@ -92,7 +93,8 @@ class Login(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny,)
     serializer_class = CredentialsSerializer
 
-    def post(self, request, *args, **kwargs):
+    @staticmethod
+    def post(request):
         username = request.data.get('username')
         password = request.data.get('password')
         user = authenticate(username=username, password=password)
@@ -107,7 +109,7 @@ class Login(generics.CreateAPIView):
                 return Response(Constants.LOGIN_SUCCESS, status=200)
 
             except User.DoesNotExist:
-                return Response(Constants.ERROR_USER_NOT_FOUND, status=500)
+                return Response(Constants.ERROR_USER_NOT_FOUND, status=404)
 
 
 class LogOut(generics.RetrieveAPIView):
@@ -132,7 +134,8 @@ class RequestResetPassword(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny,)
     queryset = User
 
-    def post(self, request, *args, **kwargs):
+    @staticmethod
+    def post(request):
         email = request.data.get('email')
         try:
             user = User.objects.get(email=email)
@@ -150,7 +153,7 @@ class ResetPassword(mixins.RetrieveModelMixin, mixins.CreateModelMixin, generics
     permission_classes = (permissions.AllowAny,)
 
     @staticmethod
-    def get(self, *args, **kwargs):
+    def get():
         """
         Returns html page with href for ui router along with uidb64 and token
         """
@@ -189,7 +192,8 @@ class RequestResetPasswordByEmail(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny,)
     queryset = User
 
-    def post(self, request, *args, **kwargs):
+    @staticmethod
+    def post(request):
         try:
             user = User.objects.get(email=request.data.get('email'))
             content = {
@@ -230,7 +234,8 @@ class UpdateProfile(generics.UpdateAPIView):
     def get_object(self):
         return UserProfile.objects.get(user=self.request.user)
 
-    def put(self, request, *args, **kwargs):
+    @staticmethod
+    def put(request):
         """
         Update user profile
 

@@ -11,6 +11,7 @@ channels = "*"
 channels_redis = "*"
 twisted = "*"
 "pywin32" = "*"
+"psycopg2" = "*"
 
 [dev-packages]
 
