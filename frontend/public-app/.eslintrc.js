@@ -17,6 +17,14 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [ "react" ],
+	"overrides": [
+		{
+			"files": ["*.page.jsx"],
+			"rules": {
+				"react/prop-types": 0
+			}
+		}
+	],
     "rules": {
       "class-methods-use-this": 0,
       "import/extensions": 0,
@@ -31,4 +39,3 @@ module.exports = {
       "API_HOST": true
     }
   }
-  

@@ -1,4 +1,5 @@
 import os
+from decouple import config
 
 ENVIRONMENTS = {
     'development': 'django_react.settings.development',
@@ -6,13 +7,13 @@ ENVIRONMENTS = {
 }
 
 # DEPLOY IN PRODUCTION ONLY !
-ENVIRONMENT = ENVIRONMENTS['development']
+ENVIRONMENT = ENVIRONMENTS['production']
 
 CURRENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.abspath(os.path.join(CURRENT_DIR, os.pardir))
+STATIC_FILES_LOCATION = os.path.join(CURRENT_DIR, 'staticfiles')
 
-# TODO: SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '4oa-@ue@_ss97lhwh^f_!4%c32@t)b7zbebvxc&lc0cmir6c+9'
+SECRET_KEY = config('SECRET_KEY')
 
 
 # Application definition
@@ -44,7 +45,7 @@ ROOT_URLCONF = 'django_react.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(CURRENT_DIR, 'staticfiles')],
+        'DIRS': [STATIC_FILES_LOCATION],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,13 +109,13 @@ LOGOUT_REDIRECT_URL = '/'
 
 # EMAIL configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'xxx@xxx.com'
-EMAIL_HOST_PASSWORD = 'xxx'
-SERVER_EMAIL = 'xxx@xxx.com'
-DEFAULT_FROM_EMAIL = 'X Team <noreply@xxx.com>'
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+SERVER_EMAIL = config('SERVER_EMAIL')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
 
 # Channels
@@ -133,7 +134,7 @@ CHANNEL_LAYERS = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_ROOT = os.path.join(CURRENT_DIR, 'staticfiles')
+STATIC_ROOT = STATIC_FILES_LOCATION
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'frontend', 'core-app', 'dist'),

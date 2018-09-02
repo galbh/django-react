@@ -1,18 +1,17 @@
 from .base import *
+from decouple import config
 
-# TODO: setting debug to false results in static files not being served - SHOULD FIX
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
-# TODO: implement decouple library to hide sensitive data
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd1bap8uve5mgcd',
-        'USER': 'eiidvvckiyhkwb',
-        'PASSWORD': 'cecf99710f4586fba1f4563339ce94a1cf65e69dba1d70765aece8b6dc690643',
-        'HOST': 'ec2-54-221-210-97.compute-1.amazonaws.com',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
         'PORT': '5432',
     }
 }

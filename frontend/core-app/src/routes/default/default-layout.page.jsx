@@ -7,10 +7,12 @@ import HeaderComponent from '../../features/components/header/header.component.j
 import userModel from '../../common/state/auth/auth.models';
 import { OpenDrawerAction } from '../../common/state/drawer/drawer.actions';
 import { LogoutAction } from '../../common/state/auth/auth.actions';
+import { StartLoaderAction, StopLoaderAction } from '../../common/state/shared/shared.actions';
 
 const DefaultLayout = (props) => {
   const {
-    loggedInUser, path, component, openDrawer, logout
+    loggedInUser, path, component, openDrawer,
+    logout, startLoader, stopLoader
   } = props;
 
   const Component = component;
@@ -19,12 +21,17 @@ const DefaultLayout = (props) => {
       path={path}
       render={matchProps => (
         <div className={styles.container}>
+
           <HeaderComponent
             path={path}
             openDrawer={openDrawer}
-            logout={logout}
+            logout={() => {
+              startLoader();
+              logout().then(() => stopLoader());
+            }}
             loggedInUser={loggedInUser}
           />
+
           <div className={styles.wrapper}>
             <Component {...matchProps} />
           </div>
@@ -43,7 +50,9 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return {
     openDrawer: () => dispatch(new OpenDrawerAction()),
-    logout: () => dispatch(new LogoutAction())
+    logout: () => dispatch(new LogoutAction()),
+    startLoader: () => dispatch(new StartLoaderAction()),
+    stopLoader: () => dispatch(new StopLoaderAction())
   };
 }
 

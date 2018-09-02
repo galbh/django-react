@@ -12,6 +12,7 @@ channels_redis = "*"
 twisted = "*"
 "pywin32" = "*"
 "psycopg2" = "*"
+python-decouple = "*"
 
 [dev-packages]
 

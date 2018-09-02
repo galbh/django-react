@@ -28,7 +28,7 @@ class ConfirmResetPasswordPage extends Component {
 
     return (
       <div className={styles.container}>
-        <CardComponent          
+        <CardComponent
           title={t('RESET_PASSWORD')}
           className={styles.card}
           contentClassName={styles.cardContent}

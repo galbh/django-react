@@ -7,6 +7,7 @@ import { TextField, Button } from '@material-ui/core';
 import styles from './login.page.scss';
 import { LoginAction } from '../../../common/state/auth/auth.actions';
 import { routes } from '../../../common/constants';
+import { StartLoaderAction, StopLoaderAction } from '../../../common/state/shared/shared.actions';
 
 class LoginPage extends Component {
   constructor (props) {
@@ -16,7 +17,10 @@ class LoginPage extends Component {
 
   onSubmit (e, username, password) {
     e.preventDefault();
-    this.props.login(username, password);
+    const { startLoader, stopLoader, login } = this.props;
+
+    startLoader();
+    login(username, password).then(() => stopLoader());
   }
 
   render () {
@@ -65,7 +69,9 @@ LoginPage.propTypes = {
 
 function mapDispatchToProps (dispatch) {
   return {
-    login: (username, password) => dispatch(new LoginAction(username, password))
+    login: (username, password) => dispatch(new LoginAction(username, password)),
+    startLoader: () => dispatch(new StartLoaderAction()),
+    stopLoader: () => dispatch(new StopLoaderAction())
   };
 }
 
