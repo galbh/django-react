@@ -15,7 +15,7 @@ access_public_ui_folder = 'cd ' + os.path.join(dir_path, 'frontend', 'public-app
 access_root_folder = 'cd ' + os.getcwd()
 npm_install = 'npm i'
 npm_build = 'npm run build'
-run_django_server = manage + 'runserver'
+run_django_server = manage + 'runserver --insecure'
 run_chrome = 'start chrome "http://localhost:8000"'
 create_super_user = "echo from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@mail.com', '1234') | pipenv run python manage.py shell"
 
