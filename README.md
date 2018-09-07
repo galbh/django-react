@@ -20,21 +20,10 @@
 
 - If serving this application from a non windows server (heroku for example) make sure to remove `pywin32` from Pipfile.
 - Change ENVIRONMENT variable in settings/base.py to ENVIRONMENT['production'] before deploying to production.
-- Before running install.py make sure to create .env file in the root directory with the following variables:
-	* SECRET_KEY
-	* DB_NAME
-	* DB_USER
-	* DB_PASSWORD
-	* DB_HOST
-	* EMAIL_HOST
-	* EMAIL_USE_TLS
-	* EMAIL_PORT
-	* EMAIL_HOST_USER
-	* EMAIL_HOST_PASSWORD
-	* SERVER_EMAIL
-	* DEFAULT_FROM_EMAIL
-
-here's a [link](https://github.com/galbh/dotfiles/blob/master/.env) to an example .env file. 
+- Before running install.py make sure to create .env file in the root directory.
+    * here's a [link](https://github.com/galbh/dotfiles/blob/master/.env) to an example .env file. 
+    * All variables are required for production environment.
+    * For development environment only SECRET_KEY is required.
 
 ## Installation
 
