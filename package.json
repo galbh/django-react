@@ -1,0 +1,10 @@
+{
+  "name": "build-ui",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "cd frontend/core-app && npm install && cd ../public-app && npm install"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
