@@ -1,9 +1,11 @@
 import os
 from decouple import config
 
+PROJECT_DIR_NAME = 'django_react'
+
 ENVIRONMENTS = {
-    'development': 'django_react.settings.development',
-    'production': 'django_react.settings.production',
+    'development': '{}.settings.development'.format(PROJECT_DIR_NAME),
+    'production': '{}.settings.production'.format(PROJECT_DIR_NAME),
 }
 
 # CHANGE TO - ENVIRONMENTS['production'] - BEFORE DEPLOYING !
@@ -43,7 +45,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'django_react.urls'
+ROOT_URLCONF = '{}.urls'.format(PROJECT_DIR_NAME)
 
 TEMPLATES = [
     {
@@ -61,7 +63,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_react.wsgi.application'
+WSGI_APPLICATION = '{}.wsgi.application'.format(PROJECT_DIR_NAME)
 
 
 # Password validation
@@ -122,13 +124,13 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
 
 # Channels
-ASGI_APPLICATION = "django_react.routing.application"
+ASGI_APPLICATION = '{}.routing.application'.format(PROJECT_DIR_NAME)
 redis_host = os.environ.get('REDIS_HOST', 'redis-11506.c9.us-east-1-4.ec2.cloud.redislabs.com')
 CHANNEL_LAYERS = {
-    # "default": {
-    #     "BACKEND": "channels_redis.core.RedisChannelLayer",
-    #     "CONFIG": {
-    #         "hosts": [(redis_host, 6379)], #11506
+    # 'default': {
+    #     'BACKEND': 'channels_redis.core.RedisChannelLayer',
+    #     'CONFIG': {
+    #         'hosts': [(redis_host, 6379)], #11506
     #     },
     # },
 }
