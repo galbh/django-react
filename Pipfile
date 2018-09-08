@@ -11,8 +11,9 @@ channels = "*"
 channels_redis = "*"
 twisted = "*"
 "pywin32" = "*"
-"psycopg2" = "*"
+psycopg2-binary = "*"
 python-decouple = "*"
+whitenoise = "*"
 
 [dev-packages]
 

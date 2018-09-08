@@ -40,6 +40,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'django_react.urls'
@@ -143,3 +144,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'frontend', 'public-app', 'dist'),
     os.path.join(BASE_DIR, 'frontend', 'templates'),
 )
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
