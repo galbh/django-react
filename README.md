@@ -64,8 +64,12 @@ Run `python install.py` from root directory to preform the following tasks autom
 ## Deployment
 
 - Change ENVIRONMENT variable in settings/base.py to ENVIRONMENT['production'].
+- Add your host to ALLOWED_HOSTS in settings/production.py.
 - If serving this application from a non windows machine make sure to remove `pywin32` from Pipfile.
-- Heroku required both python and node.js buildpacks.
+- Heroku deploy requires both python and node.js buildpacks:
+    * Set manually in Heroku ui or cli.
+    * Node comes first so server can collect static files.
+- Before deploying to Heroku make sure to set config vars (same as .env described above).
 
 
 <a id="Django">
