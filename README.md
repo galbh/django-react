@@ -1,6 +1,7 @@
 # Django - React.js #
 - [Installation](#Installation)
 - [Development](#Development)
+- [Deployment](#Deployment)
 - [Django](#Django)
   * [Rest Framework](#Rest-Framework)
   * [Channels](#Channels)
@@ -18,8 +19,6 @@
 
 ## IMPORTANT
 
-- If serving this application from a non windows server (heroku for example) make sure to remove `pywin32` from Pipfile.
-- Change ENVIRONMENT variable in settings/base.py to ENVIRONMENT['production'] before deploying to production.
 - Before running install.py make sure to create .env file in the root directory.
     * here's a [link](https://github.com/galbh/dotfiles/blob/master/.env) to an example .env file. 
     * All variables are required for production environment.
@@ -55,9 +54,18 @@ Run `python install.py` from root directory to preform the following tasks autom
 
 ## Development
 
-- Run `pipenv run python manage.py runserver --insecure` from root directory to run django developement server
-- Run `python run_servers.py` from any of the frontend ui apps to run node development servers
+- Run `pipenv run python manage.py runserver --insecure` from root directory to run django developement server.
+- Run `python run_servers.py` from any of the frontend ui apps to run node development servers.
 - Frontend application are a clone of this repository: https://github.com/galbh/react-starter
+
+<a id="Deployment">
+
+
+## Deployment
+
+- Change ENVIRONMENT variable in settings/base.py to ENVIRONMENT['production'].
+- If serving this application from a non windows machine make sure to remove `pywin32` from Pipfile.
+- Heroku required both python and node.js buildpacks.
 
 
 <a id="Django">
