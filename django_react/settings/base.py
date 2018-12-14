@@ -1,15 +1,18 @@
 import os
+
+from attr import dataclass
 from decouple import config
 
 PROJECT_DIR_NAME = 'django_react'
 
-ENVIRONMENTS = {
-    'development': '{}.settings.development'.format(PROJECT_DIR_NAME),
-    'production': '{}.settings.production'.format(PROJECT_DIR_NAME),
-}
+@dataclass
+class Environments:
+    dev = '{}.settings.development'.format(PROJECT_DIR_NAME)
+    prod = '{}.settings.production'.format(PROJECT_DIR_NAME)
 
-# CHANGE TO - ENVIRONMENTS['production'] - BEFORE DEPLOYING !
-ENVIRONMENT = ENVIRONMENTS['development']
+
+# CHANGE TO - ENVIRONMENTS.prod - BEFORE DEPLOYING !
+ENVIRONMENT = Environments.dev
 
 print('running in {} environment'.format(ENVIRONMENT))
 
@@ -122,19 +125,8 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 SERVER_EMAIL = config('SERVER_EMAIL')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
-
 # Channels
 ASGI_APPLICATION = '{}.routing.application'.format(PROJECT_DIR_NAME)
-redis_host = os.environ.get('REDIS_HOST', 'redis-11506.c9.us-east-1-4.ec2.cloud.redislabs.com')
-CHANNEL_LAYERS = {
-    # 'default': {
-    #     'BACKEND': 'channels_redis.core.RedisChannelLayer',
-    #     'CONFIG': {
-    #         'hosts': [(redis_host, 6379)], #11506
-    #     },
-    # },
-}
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

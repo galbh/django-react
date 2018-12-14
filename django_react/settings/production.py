@@ -1,3 +1,4 @@
+import os
 from .base import *
 from decouple import config
 
@@ -14,4 +15,13 @@ DATABASES = {
         'HOST': config('DB_HOST'),
         'PORT': '5432',
     }
+}
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [(config('REDIS_HOST'), config('REDIS_PORT'))],
+        },
+    },
 }
