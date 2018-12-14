@@ -1,27 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
-import { Button, Toolbar, Icon, IconButton } from '@material-ui/core';
+import { translate } from 'react-i18next';
+import { Toolbar, Icon, IconButton } from '@material-ui/core';
 import styles from './header.component.scss';
 import userModel from '../../../common/state/auth/auth.models';
 
-const HeaderComponent = ({ openDrawer, logout, loggedInUser }) => (
+const HeaderComponent = ({
+  openDrawer, loggedInUser, title, t
+}) => (
   <div>
     <AppBar position="static" className={styles.header}>
       <Toolbar>
-
-        <IconButton onClick={() => openDrawer()}>
-          <Icon className={styles.hamburgerBtn}>menu</Icon>
+        <IconButton onClick={openDrawer} className="hamburger">
+          <Icon>menu</Icon>
         </IconButton>
-
-        <div className={styles.actions}>
-          {loggedInUser && <div>{loggedInUser.email}</div>}
-
-          <Button variant="outlined" onClick={logout}>
-            logout
-          </Button>
-        </div>
-
+        <div className={styles.title} style={{ flexGrow: 1 }}>{t(title)}</div>
+        {
+          loggedInUser &&
+          <div>{loggedInUser.username}</div>
+        }
       </Toolbar>
     </AppBar>
   </div>
@@ -29,10 +27,11 @@ const HeaderComponent = ({ openDrawer, logout, loggedInUser }) => (
 
 HeaderComponent.propTypes = {
   openDrawer: PropTypes.func.isRequired,
-  logout: PropTypes.func.isRequired,
-  loggedInUser: PropTypes.shape(userModel)
+  loggedInUser: PropTypes.shape(userModel),
+  title: PropTypes.string,
+  t: PropTypes.func.isRequired
 };
 
-HeaderComponent.defaultProps = { loggedInUser: null };
+HeaderComponent.defaultProps = { loggedInUser: null, title: '' };
 
-export default HeaderComponent;
+export default translate()(HeaderComponent);

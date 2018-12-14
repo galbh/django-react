@@ -1,34 +1,34 @@
 import React from 'react';
-import propTypes from 'prop-types';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
 import { DialogTitle, DialogContent } from '@material-ui/core';
 import styles from './dialog.component.scss';
-import { CloseDialogAction } from '../../../common/state/dialog/dialog.actions';
 
-const DialogComponent = props => (
+const DialogComponent = ({
+  component, title, closeDialog, open, isRtl
+}) => (
   <Dialog
-    style={props.isRtl ? { direction: 'rtl' } : null}
-    open={props.open}
-    onClose={() => props.dispatch(new CloseDialogAction())}
-    className={styles.dialog}
+    style={isRtl ? { direction: 'rtl' } : null}
+    open={open}
+    onClose={() => closeDialog()}
+    className={`${styles.dialog} dialog`}
   >
-    <DialogTitle className={styles.title}>{props.title}</DialogTitle>
+    <DialogTitle className={styles.title}>{title}</DialogTitle>
 
     <DialogContent className={styles.content}>
-      {props.text}
+      {component}
     </DialogContent>
   </Dialog>
 );
 
 DialogComponent.propTypes = {
-  open: propTypes.bool.isRequired,
-  title: propTypes.string,
-  text: propTypes.oneOfType([propTypes.string, propTypes.element]),
-  dispatch: propTypes.func.isRequired,
-  isRtl: propTypes.bool
+  open: PropTypes.bool.isRequired,
+  title: PropTypes.string,
+  component: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  isRtl: PropTypes.bool,
+  closeDialog: PropTypes.func.isRequired
 };
 
-DialogComponent.defaultProps = { title: '', text: '', isRtl: false };
+DialogComponent.defaultProps = { title: '', isRtl: false };
 
-export default connect()(DialogComponent);
+export default DialogComponent;

@@ -1,11 +1,49 @@
-$solar-edge-color: #da2128;
-$bg-primary: #2a2c2e;
-$bg-secondary: rgba(160, 160, 160, 0.58);
-$error-color: #f44336;
-$text-color: #202d3d;
-$text-color-dimmed: #afaeae;
+// colors
+$primary-background-color: #ce1026;
+$secondary-background-color: #f8f9fd;
+$primary-selected-text-color: #fff;
+$primary-dark: #40414b;
+$primary-text-color: #444444;
+$secondary-text-color: #888888;
+$dark-text-color: #4a4a4a;
+$primary-icon-color: #cccccc;
+$link-text-color: #5c9df5;
+$divider-primary-color: #919191;
+$toggle-btn-primary-color: #4b4b4b;
+$primary-dimmed-color: #d8d8d8;
+$selected-item-background-color: #dceaff;
+
+$pending-color: #479dda;
+$complete-color: #3ac187;
+$in-progress-color: #c4c5c6;
+$skipped-color: rgba(0, 0, 0, 0.54);
+
+// screen sizes
 $mobile-width: 1023px;
-$min-screen-width: 1024px;
+$tablet-width: 960px;
 $min-screen-height: 598px;
-$card-padding: 16.5px;
+$default-icon-width: 22px;
+
+// fonts
+$font-size-regular: 12px;
+$font-size-medium: 14px;
+$font-size-extra-medium: 13px;
+$font-size-small: 10px;
+$font-size-large: 24px;
+$light-weight: 200;
+
+$primary-font-family: 'OpenSans';
+$icon-font-family: 'vpp-icons';
+$material-icons-font-family: 'Material Icons';
+
+// spacing
 $frame-padding: 32px;
+$item-padding: 10px;
+$page-padding: 0 32px 33px 32px;
+$transition-rate: 0.4s;
+$cards-gap: 21px;
+$list-item-padding: 24px;
+$small-padding: 16px;
+$extra-small-padding: 8px;
+
+$border-radius: 2px;

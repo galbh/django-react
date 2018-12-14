@@ -7,6 +7,11 @@ $transition-rate: 0.4s;
 $primary-selected-text-color: red;
 $drawer-bg-color: rgba(232, 212, 212, 0.58);
 
+.rtl{
+  direction: rtl;
+  text-align: right;
+}
+
 .container {
   > div:nth-child(2) {
     width: $drawer-width!important;
@@ -19,14 +24,28 @@ $drawer-bg-color: rgba(232, 212, 212, 0.58);
   .drawer{    
     width: 100%!important;
     height: 100%;
-    background: $drawer-bg-color;
+    background: $secondary-background-color;
+
+    span{
+      width: 90%;
+      white-space: pre-wrap;
+      text-align: center;
+    }
+
+    &.rtl{
+      @extend .rtl;
+
+      .listItem{
+        @extend .rtl; 
+      }
+    }
 
     .logo{
       border-right: none;
       display: flex;
       justify-content: center;
       height: 60px;
-      background: #fff;
+      background: #ffffff;
     }
   
     a{
@@ -50,14 +69,18 @@ $drawer-bg-color: rgba(232, 212, 212, 0.58);
         }
       }
     }    
-    
+
     .active > li{
-      background: $bg-secondary;
+      background: $selected-item-background-color;
       color: $primary-selected-text-color;
       font-weight: bold;
     }
   }
-  
+
+  .listItem.selected{
+    background: $selected-item-background-color;
+  }
+
 }
 
 @media (max-width: $mobile-width) {
@@ -73,6 +96,7 @@ $drawer-bg-color: rgba(232, 212, 212, 0.58);
     height: 55px!important;
     justify-content: flex-start!important;
     padding: 0 20px;
+
     .icon{
       width: 50px;
       margin: 10px;

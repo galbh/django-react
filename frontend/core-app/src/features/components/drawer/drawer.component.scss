@@ -7,6 +7,11 @@ $transition-rate: 0.4s;
 $primary-selected-text-color: red;
 $drawer-bg-color: rgba(232, 212, 212, 0.58);
 
+.rtl{
+  direction: rtl;
+  text-align: right;
+}
+
 .container {
   > div:nth-child(2) {
     width: $drawer-width!important;
@@ -20,6 +25,14 @@ $drawer-bg-color: rgba(232, 212, 212, 0.58);
     width: 100%!important;
     height: 100%;
     background: $drawer-bg-color;
+
+    &.rtl{
+      @extend .rtl;
+
+      .listItem{
+        @extend .rtl; 
+      }
+    }
 
     .logo{
       border-right: none;
@@ -49,15 +62,24 @@ $drawer-bg-color: rgba(232, 212, 212, 0.58);
           max-width: 50px;
         }
       }
-    }    
-    
+    }
+
+    .link{
+      color: $primary-icon-color;
+      font-size: $font-size-medium;
+    }
+
     .active > li{
-      background: $bg-secondary;
+      background: $secondary-background-color;
       color: $primary-selected-text-color;
       font-weight: bold;
     }
   }
-  
+
+  .listItem.selected{
+    background: $selected-item-background-color;
+  }
+
 }
 
 @media (max-width: $mobile-width) {
@@ -73,6 +95,7 @@ $drawer-bg-color: rgba(232, 212, 212, 0.58);
     height: 55px!important;
     justify-content: flex-start!important;
     padding: 0 20px;
+
     .icon{
       width: 50px;
       margin: 10px;

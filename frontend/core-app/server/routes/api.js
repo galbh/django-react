@@ -5,7 +5,7 @@ const router = express.Router();
 // Mock data
 const loggedInUser = require('../mock/loggedInUser.json');
 
-const serverResponseTime = 200;
+const serverResponseTime = 1000;
 
 // Simulate server delayed response
 function send (res, data) {
@@ -18,10 +18,10 @@ function send (res, data) {
  * Api routes
  */
 
+// Get Logged in user
+router.get('/accounts/logged-in-user', (req, res) => send(res.status(200), loggedInUser));
+
 // Logout
 router.get('/accounts/logout', (req, res) => send(res.status(200)));
-
-// Get logged in user
-router.get('/accounts/logged-in-user', (req, res) => send(res.status(200), loggedInUser));
 
 module.exports = router;

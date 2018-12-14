@@ -7,7 +7,7 @@ import logger from 'redux-logger';
 
 import 'react-sortable-tree/style.css';
 
-import Root from './routes/routes.jsx';
+import Routes from './routes.jsx';
 import rootReducer from './common/reducers';
 
 let middlewares;
@@ -21,6 +21,6 @@ if (process.env.NODE_ENV === 'production') {
 const store = createStore(rootReducer, middlewares);
 
 ReactDOM.render(
-  <Root store={store} />,
+  <Routes store={store} />,
   document.getElementById('root')
 );

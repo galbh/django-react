@@ -1,4 +1,8 @@
 {
   "HOME_PAGE": "home page",
-  "ABOUT_PAGE": "about page"
+  "ABOUT_PAGE": "about page",
+  "LANGUAGES": "langauges",
+  "HOME_PAGE_TITLE": "home page title",
+  "ABOUT_PAGE_TITLE": "about page title",
+  "LOGOUT": "logout"
 }

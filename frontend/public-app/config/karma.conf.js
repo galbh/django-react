@@ -1,7 +1,7 @@
 const path = require('path');
 
-const testHelperPath = path.resolve('test/testHelper.js');
-const webpackConfig = require('../webpack.development.config');
+const testHelperPath = path.resolve(__dirname, './testHelper.js');
+const webpackConfig = require('./webpack.development.config');
 
 module.exports = function karmaConf (config) {
   config.set({

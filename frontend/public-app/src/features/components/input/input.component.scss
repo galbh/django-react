@@ -1,0 +1,40 @@
+@import '../../../../assets/scss/variables.scss';
+
+.container{
+  width: 100%;
+  .input{
+
+    input{
+      background: inherit;
+      color: $secondary-text-color;
+      font-size: $font-size-regular;
+      height: 100%;
+    }
+
+    input::placeholder{
+      font-size: 13px;
+    }
+
+    label{
+      font-size: 12px!important;
+      text-transform: capitalize;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+
+  }
+}
+
+:global{
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+
+  #root > div[dir=rtl] .input > label{
+    transform-origin: top right;
+  }
+}

@@ -1,18 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
-// import propTypes from 'prop-types';
+import propTypes from 'prop-types';
 import { translate } from 'react-i18next';
 import styles from './home.page.scss';
 
-const HomePage = props => (
+const HomePage = ({ t }) => (
   <div className={styles.homePage}>
-    home page
+    {t('HOME_PAGE')}
   </div>
 );
 
-// HomePage.propTypes = {
-//   dispatch: propTypes.func.isRequired,
-//   t: propTypes.func.isRequired
-// };
+HomePage.propTypes = {
+  t: propTypes.func.isRequired
+};
 
-export default connect()(translate()(HomePage));
+export default translate()(HomePage);

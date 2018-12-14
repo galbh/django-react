@@ -8,7 +8,7 @@ function authReducer (state = authState, action) {
       return { ...state, loggedInUser: action.payload };
 
     case `${LOGOUT}${SUCCESS_SUFFIX}`:
-      window.location.href = '/';
+      window.location.href = '';
       return { ...state };
 
     default:

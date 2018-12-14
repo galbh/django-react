@@ -1,4 +1,4 @@
-import createAsyncAction from '../../../createAsyncAction';
+import createAsyncAction from '../../../utils/createAsyncAction';
 import HttpService from '../../services/http.service';
 import ApiService from '../../services/api.service';
 

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import { TextField, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import styles from './reset-password.page.scss';
 import { RequestResetPasswordAction } from '../../../common/state/auth/auth.actions';
 import { OpenDialogAction } from '../../../common/state/dialog/dialog.actions';
+import InputComponent from '../../components/input/input.component.jsx';
 
 class ResetPasswordPage extends Component {
   constructor (props) {
@@ -28,7 +29,8 @@ class ResetPasswordPage extends Component {
     return (
       <div className={styles.container}>
         <form onSubmit={e => this.onSubmit(e)}>
-          <TextField
+          <InputComponent
+            autoFocus
             label={t('EMAIL')}
             placeholder={t('RESET_PASSWORD_EMAIL_PLACEHOLDER')}
             value={this.state.email}

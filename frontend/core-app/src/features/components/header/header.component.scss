@@ -1,30 +1,16 @@
 @import '../../../../assets/scss/variables.scss';
 
 .header{
-  background-color: $bg-secondary!important;
+  background-color: $secondary-background-color!important;
+  color: $primary-text-color!important;
   line-height: 60px;
   height: 60px!important;
 
   > div{
-    padding-left: 18px;
-    padding-right: 18px;
-    display: flex;
-    justify-content: space-between;
+      padding-left: 18px;
+      padding-right: 18px;
   }
-  
   .title{
       padding: 0 20px;
-  }
-
-  .actions{
-    display: flex;
-    line-height: 20px;
-    align-items: center;
-
-    > div{
-      padding: 20px;
-      color: $text-color;
-      font-weight: bold;
-    }
   }
 }

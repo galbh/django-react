@@ -10,5 +10,12 @@
   "EMAIL_WAS_SENT_SUCCESSFULLY": "email was sent successfully",
   "SUCCESS": "success",
   "RESET_PASSWORD": "reset password",
-  "PASSWORD_CHANGED": "password changed"
+  "PASSWORD_CHANGED": "password changed",
+  "LANGUAGES": "langauges",
+  "HOME_PAGE_TITLE": "home page title",
+  "ABOUT_PAGE_TITLE": "about page title",
+  "SUBMIT": "submit",
+  "FORGOT_PASSWORD": "forgot your password",
+  "LOGIN": "login",
+  "LOGOUT": "logout"
 }

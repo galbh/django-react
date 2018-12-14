@@ -1,17 +1,18 @@
 import React from 'react';
-import propTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import LogoSrc from '../../../../assets/img/logo.png';
 import styles from './logo.component.scss';
 
-const LogoComponent = props => (
-  <div role="presentation" className={styles.logo} onClick={() => props.history.push('/')}>
+const LogoComponent = ({ onClick }) => (
+  <div role="presentation" className={styles.logo} onClick={onClick}>
     <img src={LogoSrc} alt="solar edge logo" />
   </div>
 );
 
 LogoComponent.propTypes = {
-  history: propTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
+  onClick: PropTypes.func
 };
 
-export default withRouter(LogoComponent);
+LogoComponent.defaultProps = { onClick: () => {} };
+
+export default LogoComponent;

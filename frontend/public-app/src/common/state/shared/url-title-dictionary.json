@@ -1,3 +1,4 @@
 {
-  "/": "HOME_PAGE"
+  "/login": "LOGIN",
+  "/reset-password": "RESET_PASSWORD"
 }
