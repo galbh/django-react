@@ -6,6 +6,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 # Available commands
 install_pipenv = 'pip install pipenv'
+install_pip = 'pipenv run pip install pip==18.0'
 pipinstall = 'pipenv install'
 manage = 'pipenv run python manage.py '
 makemigrations = manage + 'makemigrations'
@@ -26,6 +27,7 @@ create_super_user = "echo from backend.accounts.models import UserProfile; " \
 
 commands = [
     install_pipenv,
+    install_pip,
     # install server dependencies
     pipinstall,
     # migrate data base
