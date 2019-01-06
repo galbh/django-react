@@ -9,7 +9,7 @@ class HttpService {
       headers.append('Content-Type', options.contentType);
     }
 
-    return fetch(API_HOST + url, {
+    return fetch(url, {
       method,
       headers,
       credentials: 'same-origin',
